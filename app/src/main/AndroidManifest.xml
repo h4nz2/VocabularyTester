@@ -9,13 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.ManageUnitsActivity"
+            android:label="@string/title_activity_manage_units"
+            android:parentActivityName=".activities.MainMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="janhric.vocabularytester.activities.MainMenuActivity" />
+        </activity>
+        <activity android:name=".activities.PractiseStartActivity"></activity>
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@ import android.view.View;
 
 import janhric.vocabularytester.R;
 
-public class manageUnitsActivity extends AppCompatActivity {
+public class ManageUnitsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

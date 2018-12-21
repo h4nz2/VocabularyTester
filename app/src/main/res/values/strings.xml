@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VocabularyTester</string>
+    <string name="title_activity_manage_units">Manage units</string>
 </resources>

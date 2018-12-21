@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="janhric.vocabularytester.activities.manageUnitsActivity"
+    tools:context="janhric.vocabularytester.activities.ManageUnitsActivity"
     tools:showIn="@layout/activity_manage_units">
 
 </android.support.constraint.ConstraintLayout>
