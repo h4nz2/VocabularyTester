@@ -93,7 +93,7 @@ public class UnitDetailActivity extends AppCompatActivity {
         }
         PhraseCRUD phraseCRUD = new PhraseCRUD(this);
         mPhraseList.clear();
-        mPhraseList.addAll(phraseCRUD.getAllPhrases());
+        mPhraseList.addAll(phraseCRUD.getUnitPhrases(mUnit));
     }
 
     @Override

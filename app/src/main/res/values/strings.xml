@@ -5,4 +5,7 @@
     <string name="name">Name</string>
     <string name="english_phrase">English Phrase</string>
     <string name="czech_phrase">Czech Phrase</string>
+    <string name="start">Start</string>
+    <string name="czech_to_english">Czech to English</string>
+    <string name="english_to_czech">English to Czech</string>
 </resources>

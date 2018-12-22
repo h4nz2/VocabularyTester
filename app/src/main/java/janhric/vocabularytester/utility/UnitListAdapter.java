@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import janhric.vocabularytester.R;
+import janhric.vocabularytester.activities.PractiseDetailsActivity;
+import janhric.vocabularytester.activities.PractiseStartActivity;
 import janhric.vocabularytester.activities.UnitDetailActivity;
 import janhric.vocabularytester.models.Unit;
 
@@ -24,10 +25,12 @@ import janhric.vocabularytester.models.Unit;
 public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.ViewHolder> {
     private final List<Unit> mUnitList;
     private Context mContext;
+    private int mMode;
 
-    public UnitListAdapter(List<Unit> newList, Context context){
+    public UnitListAdapter(List<Unit> newList, Context context, int mode) {
         mUnitList = newList;
         mContext = context;
+        mMode = mode;
     }
 
     @Override
@@ -52,7 +55,7 @@ public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.ViewHo
         mUnitList.addAll(newlist);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         private TextView nameView;
 
         public ViewHolder(View view) {
@@ -62,15 +65,25 @@ public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.ViewHo
             view.setOnLongClickListener(this);
         }
 
-        public void populateRow(Unit unit){
+        public void populateRow(Unit unit) {
             nameView.setText(unit.getName());
         }
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(mContext, UnitDetailActivity.class);
-            intent.putExtra(UnitDetailActivity.UNIT_TO_VIEW, mUnitList.get(getAdapterPosition()));
-            mContext.startActivity(intent);
+            Intent intent;
+            switch (mMode) {
+                case Unit.MODE_MANAGE:
+                    intent = new Intent(mContext, UnitDetailActivity.class);
+                    intent.putExtra(UnitDetailActivity.UNIT_TO_VIEW, mUnitList.get(getAdapterPosition()));
+                    mContext.startActivity(intent);
+                    break;
+                case Unit.MODE_PRACTISE:
+                    intent = new Intent(mContext, PractiseDetailsActivity.class);
+                    intent.putExtra(PractiseStartActivity.UNIT_TO_PRACTISE, mUnitList.get(getAdapterPosition()));
+                    mContext.startActivity(intent);
+                    break;
+            }
         }
 
 

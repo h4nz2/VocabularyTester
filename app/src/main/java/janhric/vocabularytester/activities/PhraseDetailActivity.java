@@ -2,18 +2,47 @@ package janhric.vocabularytester.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import janhric.vocabularytester.R;
+import janhric.vocabularytester.models.Phrase;
+import janhric.vocabularytester.models.Unit;
+import janhric.vocabularytester.utility.PhraseCRUD;
 
 public class PhraseDetailActivity extends AppCompatActivity {
     public static final String PHRASE_TO_VIEW = "phrase_to_view";
-    public static final String MODE = "mode";
-    public static final int EDIT_MODE = 1000;
-    public static final int CREATE_MODE = 1001;
+
+    private Phrase mPhrase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrase_detail);
+
+        mPhrase = (Phrase) getIntent().getSerializableExtra(PHRASE_TO_VIEW);
+
+        final EditText czechEdit = (EditText) findViewById(R.id.czechText);
+        czechEdit.setText(mPhrase.getCzechPhrase());
+        final EditText englishEdit = (EditText) findViewById(R.id.englishText);
+        englishEdit.setText(mPhrase.getEnglishPhrase());
+
+        Button saveButton = (Button) findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Phrase phrase = new Phrase(
+                        czechEdit.getText().toString(),
+                        englishEdit.getText().toString(),
+                        mPhrase.getUnit()
+                );
+
+                PhraseCRUD phraseCRUD = new PhraseCRUD(view.getContext());
+                phraseCRUD.savePhrase(phrase);
+
+                finish();
+            }
+        });
     }
 }

@@ -19,7 +19,7 @@ public class MainMenuActivity extends AppCompatActivity {
         practiseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), PractiseStartActivity.class);
+                Intent intent = new Intent(v.getContext(), PractiseSelectUnitActivity.class);
                 startActivity(intent);
             }
         });

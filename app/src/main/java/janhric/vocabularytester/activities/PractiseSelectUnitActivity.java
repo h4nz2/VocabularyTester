@@ -1,15 +1,9 @@
 package janhric.vocabularytester.activities;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +13,7 @@ import janhric.vocabularytester.models.Unit;
 import janhric.vocabularytester.utility.UnitCRUD;
 import janhric.vocabularytester.utility.UnitListAdapter;
 
-import static java.security.AccessController.getContext;
-
-public class ManageUnitsActivity extends AppCompatActivity {
+public class PractiseSelectUnitActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private UnitListAdapter mAdapter;
     private List<Unit> mUnitList;
@@ -29,21 +21,12 @@ public class ManageUnitsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manage_units);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_practise_start);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CreateUnitActivity.class);
-                startActivity(intent);
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mRecyclerView = (RecyclerView)
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.unitsList);
+                findViewById(R.id.unitsList);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
@@ -52,11 +35,10 @@ public class ManageUnitsActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        if(mAdapter == null){
-            mAdapter = new UnitListAdapter(mUnitList, this, Unit.MODE_MANAGE);
+        if (mAdapter == null) {
+            mAdapter = new UnitListAdapter(mUnitList, this, Unit.MODE_PRACTISE);
             mRecyclerView.setAdapter(mAdapter);
-        }
-        else
+        } else
             mAdapter.notifyDataSetChanged();
     }
 

@@ -84,7 +84,8 @@ public class PhraseCRUD {
                 Phrase.KEY_UNIT +
                 " FROM " + Phrase.TABLE +
                 " WHERE " + Phrase.KEY_UNIT +
-                " = " + unit.getId();
+                " = " + unit.getId() +
+                " ORDER BY czech Asc;";
         List<Phrase> PhraseList = new ArrayList<Phrase>();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {

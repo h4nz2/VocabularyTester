@@ -25,11 +25,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="janhric.vocabularytester.activities.MainMenuActivity" />
         </activity>
-        <activity android:name=".activities.PractiseStartActivity" />
+        <activity android:name=".activities.PractiseSelectUnitActivity" />
         <activity android:name=".activities.UnitDetailActivity" />
         <activity android:name=".activities.PhraseDetailActivity" />
         <activity android:name=".activities.CreateUnitActivity" />
-        <activity android:name=".activities.CreatePhraseActivity"></activity>
+        <activity android:name=".activities.CreatePhraseActivity" />
+        <activity android:name=".activities.PractiseStartActivity" />
+        <activity android:name=".activities.PractiseDetailsActivity"></activity>
     </application>
 
 </manifest>
