@@ -25,15 +25,15 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE_TEAS = "CREATE TABLE " + Phrase.TABLE + '('
-                + Phrase.KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+                + Phrase.KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Phrase.KEY_CZECH + " TEXT, "
                 + Phrase.KEY_ENGLISH + " TEXT, "
-                + Phrase.KEY_UNIT + " INTEGER, ) NOT NULL";
+                + Phrase.KEY_UNIT + " INTEGER NOT NULL );";
         db.execSQL(CREATE_TABLE_TEAS);
 
         String CREATE_TABLE_SHOPS = "CREATE TABLE " + Unit.TABLE + '('
                 + Unit.KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-                + Unit.KEY_NAME + " TEXT, )";
+                + Unit.KEY_NAME + " TEXT );";
         db.execSQL(CREATE_TABLE_SHOPS);
     }
 

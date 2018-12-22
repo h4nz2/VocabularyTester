@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">VocabularyTester</string>
     <string name="title_activity_manage_units">Manage units</string>
+    <string name="saveButtonText">Save</string>
+    <string name="name">Name</string>
+    <string name="english_phrase">English Phrase</string>
+    <string name="czech_phrase">Czech Phrase</string>
 </resources>

@@ -25,7 +25,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="janhric.vocabularytester.activities.MainMenuActivity" />
         </activity>
-        <activity android:name=".activities.PractiseStartActivity"></activity>
+        <activity android:name=".activities.PractiseStartActivity" />
+        <activity android:name=".activities.UnitDetailActivity" />
+        <activity android:name=".activities.PhraseDetailActivity" />
+        <activity android:name=".activities.CreateUnitActivity" />
+        <activity android:name=".activities.CreatePhraseActivity"></activity>
     </application>
 
 </manifest>

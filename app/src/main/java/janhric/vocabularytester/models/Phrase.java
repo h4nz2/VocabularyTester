@@ -1,16 +1,18 @@
 package janhric.vocabularytester.models;
 
+import java.io.Serializable;
+
 /**
  * Created by Honza on 12/21/2018.
  */
 
-public class Phrase {
+public class Phrase implements Serializable {
     // Labels table name
     public static final String TABLE = "phrase";
     // Labels Table Columns names
     public static final String KEY_ID = "id";
     public static final String KEY_CZECH = "czech";
-    public static final String KEY_ENGLISH = "type";
+    public static final String KEY_ENGLISH = "english";
     public static final String KEY_UNIT = "unit_id";
 
     private int id;

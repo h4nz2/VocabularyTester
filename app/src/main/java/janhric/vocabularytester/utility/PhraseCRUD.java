@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +24,18 @@ public class PhraseCRUD {
         dbHelper = new DBHelper(context);
     }
 
-    public void addPhrase(Phrase phrase){
+    public void savePhrase(Phrase phrase) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Phrase.KEY_CZECH, phrase.getCzechPhrase());
         values.put(Phrase.KEY_ENGLISH, phrase.getEnglishPhrase());
         values.put(Phrase.KEY_UNIT, phrase.getUnit().getId());
 
-        db.insert(Phrase.TABLE, null, values);
+        if (phrase.getId() <= 0) {
+            db.insert(Phrase.TABLE, null, values);
+        } else {
+            db.update(Phrase.TABLE, values, Phrase.KEY_ID + "= ?", new String[]{String.valueOf(phrase.getId())});
+        }
         db.close();
     }
 
@@ -55,22 +60,13 @@ public class PhraseCRUD {
                         unitCRUD.findUnit(cursor.getInt(cursor.getColumnIndex(Phrase.KEY_UNIT)))
                 );
                 PhraseList.add(phrase);
+                Log.i("phrase crud", phrase.getCzechPhrase() + '|' + phrase.getEnglishPhrase());
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
         return PhraseList;
     }
-
-    /*public void updatePhrase(Phrase Phrase){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(Phrase.KEY_NAME, Phrase.getName());
-        values.put(Phrase.KEY_TYPE, Phrase.getType().ordinal());
-        values.put(Phrase.KEY_INFUSIONS, Phrase.getInfusions());
-        db.update(Phrase.TABLE, values, Phrase.KEY_ID + "= ?", new String[]{String.valueOf(Phrase.getID())});
-        db.close();
-    }*/
 
     public void deletePhrase(Phrase Phrase){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
