@@ -8,4 +8,13 @@
     <string name="start">Start</string>
     <string name="czech_to_english">Czech to English</string>
     <string name="english_to_czech">English to Czech</string>
+    <string name="checkAnswer">Check Answer</string>
+    <string name="answer">Answer</string>
+    <string name="english">English</string>
+    <string name="czech">Czech</string>
+    <string name="next">Next</string>
+    <string name="correctAnswer">Correct answer: %1$s</string>
+    <string name="restart">Restart</string>
+    <string name="select_unit">Select Unit</string>
+    <string name="main_menu">Main Menu</string>
 </resources>

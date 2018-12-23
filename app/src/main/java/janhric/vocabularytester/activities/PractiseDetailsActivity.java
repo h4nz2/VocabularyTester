@@ -37,7 +37,7 @@ public class PractiseDetailsActivity extends AppCompatActivity {
                     default:
                         direction = Direction.CZECH_TO_ENGLISH;
                 }
-                intent.putExtra(PractiseStartActivity.DIRECTION, direction.ordinal());
+                intent.putExtra(PractiseStartActivity.DIRECTION, direction);
                 startActivity(intent);
             }
         });

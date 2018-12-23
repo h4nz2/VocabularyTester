@@ -31,7 +31,8 @@
         <activity android:name=".activities.CreateUnitActivity" />
         <activity android:name=".activities.CreatePhraseActivity" />
         <activity android:name=".activities.PractiseStartActivity" />
-        <activity android:name=".activities.PractiseDetailsActivity"></activity>
+        <activity android:name=".activities.PractiseDetailsActivity" />
+        <activity android:name=".activities.PractiseResultsActivity"></activity>
     </application>
 
 </manifest>

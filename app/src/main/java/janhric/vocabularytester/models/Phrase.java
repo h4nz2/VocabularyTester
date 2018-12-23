@@ -2,6 +2,8 @@ package janhric.vocabularytester.models;
 
 import java.io.Serializable;
 
+import janhric.vocabularytester.utility.PractiseConfig;
+
 /**
  * Created by Honza on 12/21/2018.
  */
@@ -62,5 +64,21 @@ public class Phrase implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public String getFromPhrase(PractiseConfig.Direction direction) {
+        if (direction.equals(PractiseConfig.Direction.CZECH_TO_ENGLISH)) {
+            return this.czechPhrase;
+        } else {
+            return this.englishPhrase;
+        }
+    }
+
+    public String getToPhrase(PractiseConfig.Direction direction) {
+        if (direction.equals(PractiseConfig.Direction.CZECH_TO_ENGLISH)) {
+            return this.englishPhrase;
+        } else {
+            return this.czechPhrase;
+        }
     }
 }

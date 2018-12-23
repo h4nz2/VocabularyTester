@@ -21,7 +21,7 @@ public class PractiseSelectUnitActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_practise_start);
+        setContentView(R.layout.activity_select_unit);
 
         mRecyclerView = (RecyclerView)
 
