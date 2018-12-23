@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VocabularyTester</string>
+    <string name="app_name">Vocabulary Tester</string>
     <string name="title_activity_manage_units">Manage units</string>
     <string name="saveButtonText">Save</string>
     <string name="name">Name</string>
@@ -17,4 +17,7 @@
     <string name="restart">Restart</string>
     <string name="select_unit">Select Unit</string>
     <string name="main_menu">Main Menu</string>
+    <string name="import_from_file">import from file</string>
+    <string name="phrases_imported">Imported %1$d phrases.</string>
+    <string name="import_failed">Import failed.</string>
 </resources>

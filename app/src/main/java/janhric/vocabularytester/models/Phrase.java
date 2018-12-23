@@ -22,16 +22,18 @@ public class Phrase implements Serializable {
     private String englishPhrase;
     private Unit unit;
 
-    public Phrase(){}
+    public Phrase(){
+        this.id = -1;
+    }
 
     public Phrase(String czechPhrase, String englishPhrase, Unit unit) {
+        this.id = -1;
         this.czechPhrase = czechPhrase;
         this.englishPhrase = englishPhrase;
         this.unit = unit;
     }
 
     public Phrase(int id, String czechPhrase, String englishPhrase, Unit unit) {
-
         this.id = id;
         this.czechPhrase = czechPhrase;
         this.englishPhrase = englishPhrase;

@@ -1,17 +1,25 @@
 package janhric.vocabularytester.activities;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +29,7 @@ import janhric.vocabularytester.models.Unit;
 import janhric.vocabularytester.utility.PhraseCRUD;
 import janhric.vocabularytester.utility.PhraseListAdapter;
 import janhric.vocabularytester.utility.UnitCRUD;
-import janhric.vocabularytester.utility.UnitListAdapter;
+import janhric.vocabularytester.utility.UnitImporter;
 
 public class UnitDetailActivity extends AppCompatActivity {
     public static final String UNIT_TO_VIEW = "unit_to_view";
@@ -39,15 +47,22 @@ public class UnitDetailActivity extends AppCompatActivity {
 
         mUnit = (Unit) getIntent().getSerializableExtra(UNIT_TO_VIEW);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(mUnit.getName());
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         nameText = (TextView) findViewById(R.id.nameEdit);
         nameText.setText(mUnit.getName());
 
         nameText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -78,12 +93,30 @@ public class UnitDetailActivity extends AppCompatActivity {
         updateUI();
     }
 
-    private void updateUI(){
-        if(mAdapter == null){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_unit_detail, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.importFromFile:
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.setType("text/*");
+                startActivityForResult(intent, 0);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void updateUI() {
+        if (mAdapter == null) {
             mAdapter = new PhraseListAdapter(mPhraseList, this);
             mRecyclerView.setAdapter(mAdapter);
-        }
-        else
+        } else
             mAdapter.notifyDataSetChanged();
     }
 
@@ -101,5 +134,23 @@ public class UnitDetailActivity extends AppCompatActivity {
         super.onResume();
         reloadList();
         updateUI();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK) {
+            importPhrases(data.getData());
+        }
+    }
+
+    private void importPhrases(Uri uri) {
+        UnitImporter importer = new UnitImporter();
+        try {
+            int rowsImported = importer.importPhrases(uri, getApplicationContext(), mUnit);
+            reloadList();
+            updateUI();
+        } catch (IOException e) {
+            //shit happens
+        }
     }
 }

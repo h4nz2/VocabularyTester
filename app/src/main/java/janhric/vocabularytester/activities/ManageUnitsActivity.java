@@ -32,6 +32,7 @@ public class ManageUnitsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manage_units);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +42,6 @@ public class ManageUnitsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.unitsList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);

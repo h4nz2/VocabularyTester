@@ -32,14 +32,11 @@ public class PhraseDetailActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Phrase phrase = new Phrase(
-                        czechEdit.getText().toString(),
-                        englishEdit.getText().toString(),
-                        mPhrase.getUnit()
-                );
+                mPhrase.setCzechPhrase(czechEdit.getText().toString());
+                mPhrase.setEnglishPhrase(englishEdit.getText().toString());
 
                 PhraseCRUD phraseCRUD = new PhraseCRUD(view.getContext());
-                phraseCRUD.savePhrase(phrase);
+                phraseCRUD.savePhrase(mPhrase);
 
                 finish();
             }
