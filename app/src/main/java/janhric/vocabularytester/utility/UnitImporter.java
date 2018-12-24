@@ -24,12 +24,13 @@ public class UnitImporter {
                 inputStream, "ISO-8859-2"));
         String line;
         int count = 0;
+        PhraseCRUD phraseCRUD = new PhraseCRUD(context);
+
         while ((line = reader.readLine()) != null) {
             Log.i("read line", line);
             String[] phrases = line.split(";", 2);
             if (phrases.length == 2) {
                 Phrase newPhrase = new Phrase(phrases[1], phrases[0], unit);
-                PhraseCRUD phraseCRUD = new PhraseCRUD(context);
                 phraseCRUD.savePhrase(newPhrase);
                 count++;
             }
@@ -40,6 +41,32 @@ public class UnitImporter {
     }
 
     public int importAllUnits(Uri uri, Context context) throws IOException{
-        return -1;
+        InputStream inputStream = context.getContentResolver().openInputStream(uri);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(
+                inputStream, "ISO-8859-2"));
+        String line;
+        int count = 0;
+        Unit unit = null;
+        PhraseCRUD phraseCRUD = new PhraseCRUD(context);
+        UnitCRUD unitCRUD = new UnitCRUD(context);
+
+        while ((line = reader.readLine()) != null) {
+            Log.i("read line", line);
+            if (line.startsWith("*")) {
+                unit = new Unit(line.replaceFirst("\\*", ""));
+                unitCRUD.saveUnit(unit);
+            }
+            if (!(unit == null)) {
+                String[] phrases = line.split(";", 2);
+                if (phrases.length == 2) {
+                    Phrase newPhrase = new Phrase(phrases[1], phrases[0], unit);
+                    phraseCRUD.savePhrase(newPhrase);
+                    count++;
+                }
+            }
+        }
+        inputStream.close();
+
+        return count;
     }
 }

@@ -26,7 +26,10 @@ public class Unit implements Serializable{
 
     private int id;
     private String name;
-    private List<Phrase> phrases;
+
+    public Unit(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;
@@ -38,5 +41,11 @@ public class Unit implements Serializable{
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        if (this.id <= 0) {
+            this.id = id;
+        }
     }
 }

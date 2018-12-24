@@ -57,7 +57,8 @@ public class UnitCRUD {
         values.put(Unit.KEY_NAME, unit.getName());
 
         if (unit.getId() <= 0) {
-            db.insert(Unit.TABLE, null, values);
+            int id = (int) db.insert(Unit.TABLE, null, values);
+            unit.setId(id);
         } else {
             db.update(Unit.TABLE, values, Unit.KEY_ID + "= ?", new String[]{String.valueOf(unit.getId())});
         }
