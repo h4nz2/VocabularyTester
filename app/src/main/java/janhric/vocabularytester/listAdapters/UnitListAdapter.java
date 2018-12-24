@@ -1,4 +1,4 @@
-package janhric.vocabularytester.utility;
+package janhric.vocabularytester.listAdapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -17,6 +17,7 @@ import janhric.vocabularytester.activities.PractiseDetailsActivity;
 import janhric.vocabularytester.activities.PractiseStartActivity;
 import janhric.vocabularytester.activities.UnitDetailActivity;
 import janhric.vocabularytester.models.Unit;
+import janhric.vocabularytester.utility.UnitCRUD;
 
 /**
  * Created by Honza on 12/22/2018.

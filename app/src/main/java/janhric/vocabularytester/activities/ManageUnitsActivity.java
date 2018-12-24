@@ -21,7 +21,7 @@ import janhric.vocabularytester.R;
 import janhric.vocabularytester.models.Unit;
 import janhric.vocabularytester.utility.UnitCRUD;
 import janhric.vocabularytester.utility.UnitImporter;
-import janhric.vocabularytester.utility.UnitListAdapter;
+import janhric.vocabularytester.listAdapters.UnitListAdapter;
 
 public class ManageUnitsActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;

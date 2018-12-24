@@ -1,26 +1,21 @@
-package janhric.vocabularytester.utility;
+package janhric.vocabularytester.listAdapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.CoderResult;
 import java.util.List;
 
 import janhric.vocabularytester.R;
 import janhric.vocabularytester.activities.PhraseDetailActivity;
 import janhric.vocabularytester.models.Phrase;
+import janhric.vocabularytester.utility.PhraseCRUD;
 
 /**
  * Created by Honza on 12/22/2018.

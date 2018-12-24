@@ -11,7 +11,7 @@ import java.util.List;
 import janhric.vocabularytester.R;
 import janhric.vocabularytester.models.Unit;
 import janhric.vocabularytester.utility.UnitCRUD;
-import janhric.vocabularytester.utility.UnitListAdapter;
+import janhric.vocabularytester.listAdapters.UnitListAdapter;
 
 public class PractiseSelectUnitActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;

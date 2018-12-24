@@ -28,15 +28,15 @@ public class Phrase implements Serializable {
 
     public Phrase(String czechPhrase, String englishPhrase, Unit unit) {
         this.id = -1;
-        this.czechPhrase = czechPhrase;
-        this.englishPhrase = englishPhrase;
+        setCzechPhrase(czechPhrase);
+        setEnglishPhrase(englishPhrase);
         this.unit = unit;
     }
 
     public Phrase(int id, String czechPhrase, String englishPhrase, Unit unit) {
         this.id = id;
-        this.czechPhrase = czechPhrase;
-        this.englishPhrase = englishPhrase;
+        setCzechPhrase(czechPhrase);
+        setEnglishPhrase(englishPhrase);
         this.unit = unit;
     }
 
@@ -45,7 +45,7 @@ public class Phrase implements Serializable {
     }
 
     public void setCzechPhrase(String czechPhrase) {
-        this.czechPhrase = czechPhrase;
+        this.czechPhrase = czechPhrase.trim();
     }
 
     public String getEnglishPhrase() {
@@ -53,7 +53,7 @@ public class Phrase implements Serializable {
     }
 
     public void setEnglishPhrase(String englishPhrase) {
-        this.englishPhrase = englishPhrase;
+        this.englishPhrase = englishPhrase.trim();
     }
 
     public Unit getUnit() {

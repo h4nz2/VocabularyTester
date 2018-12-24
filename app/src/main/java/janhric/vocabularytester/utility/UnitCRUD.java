@@ -78,7 +78,7 @@ public class UnitCRUD {
                 Unit.KEY_ID + ',' +
                 Unit.KEY_NAME +
                 " FROM " + Unit.TABLE +
-                " ORDER BY name Asc";
+                " ORDER BY name COLLATE NOCASE Asc";
         List<Unit> unitList = new ArrayList<Unit>();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {

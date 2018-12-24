@@ -25,8 +25,8 @@ public class PractiseStartActivity extends AppCompatActivity {
     private Direction mDirection;
     private Unit mUnit;
     private List<Phrase> mPhrases;
-    private List<Phrase> mCorrectAnswers;
-    private List<Phrase> mWrongAnswers;
+    private ArrayList<Phrase> mCorrectAnswers;
+    private ArrayList<Phrase> mWrongAnswers;
     private Iterator<Phrase> mCurrentList;
     private Phrase mCurrentPhrase;
     private boolean mAnswerChecked;
@@ -103,8 +103,8 @@ public class PractiseStartActivity extends AppCompatActivity {
         Intent intent = new Intent(this.getApplicationContext(), PractiseResultsActivity.class);
         intent.putExtra(PractiseStartActivity.UNIT_TO_PRACTISE, mUnit);
         intent.putExtra(PractiseStartActivity.DIRECTION, mDirection);
+        intent.putExtra(PractiseResultsActivity.WRONG_ANSWERS, mWrongAnswers);
         startActivity(intent);
-        // TODO send results
     }
 
     private class CheckAnswerListener implements View.OnClickListener {
@@ -114,9 +114,13 @@ public class PractiseStartActivity extends AppCompatActivity {
                 showNextPhrase();
             } else {
                 // check answer
-                String answer = answerEdit.getText().toString();
-                String correctAnswer = mCurrentPhrase.getToPhrase(mDirection);
-                // TODO evaluate answer
+                String answer = answerEdit.getText().toString().toLowerCase().trim();
+                String correctAnswer = mCurrentPhrase.getToPhrase(mDirection).toLowerCase();
+                if (answer.equals(correctAnswer)) {
+                    mCorrectAnswers.add(mCurrentPhrase);
+                } else {
+                    mWrongAnswers.add(mCurrentPhrase);
+                }
                 correctAnswerText.setText(getString(R.string.correctAnswer, correctAnswer));
 
                 // enable next phrase

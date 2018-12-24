@@ -5,20 +5,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +24,7 @@ import janhric.vocabularytester.R;
 import janhric.vocabularytester.models.Phrase;
 import janhric.vocabularytester.models.Unit;
 import janhric.vocabularytester.utility.PhraseCRUD;
-import janhric.vocabularytester.utility.PhraseListAdapter;
+import janhric.vocabularytester.listAdapters.PhraseListAdapter;
 import janhric.vocabularytester.utility.UnitCRUD;
 import janhric.vocabularytester.utility.UnitImporter;
 
@@ -48,7 +45,7 @@ public class UnitDetailActivity extends AppCompatActivity {
         mUnit = (Unit) getIntent().getSerializableExtra(UNIT_TO_VIEW);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(mUnit.getName());
+        toolbar.setTitle(R.string.edit_unit);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

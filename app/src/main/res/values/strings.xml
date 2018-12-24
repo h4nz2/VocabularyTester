@@ -20,4 +20,6 @@
     <string name="import_from_file">import from file</string>
     <string name="phrases_imported">Imported %1$d phrases.</string>
     <string name="import_failed">Import failed.</string>
+    <string name="wrong_answers">Wrong answers</string>
+    <string name="edit_unit">Edit unit</string>
 </resources>
