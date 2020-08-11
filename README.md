@@ -1,0 +1,1 @@
+An app that allows you to exercise your vocabulary. You can create your own test units and the app will allow you to test your knowledge of the units. This is an early version of the app, future improvements will be added.
